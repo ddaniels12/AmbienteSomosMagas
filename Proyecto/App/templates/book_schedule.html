@@ -1,0 +1,11 @@
+<!-- book_schedule.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Agendar Horario</h2>
+<form method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit">Agendar</button>
+</form>
+{% endblock %}

@@ -1,0 +1,33 @@
+<!-- schedule_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Horarios Disponibles</h2>
+<div id='calendar'></div>
+
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'es', // Configuración para mostrar el calendario en español
+            initialView: 'dayGridMonth',
+            events: function(fetchInfo, successCallback, failureCallback) {
+                fetch('/schedule_list/')
+                    .then(response => response.json())
+                    .then(data => successCallback(data))
+                    .catch(error => failureCallback(error));
+            },
+            eventClick: function(info) {
+                window.location.href = info.event.url;
+                info.jsEvent.preventDefault(); // Prevents the browser from following the link in the href attribute
+            }
+        });
+
+        calendar.render();
+    });
+</script>
+{% endblock %}
