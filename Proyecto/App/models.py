@@ -1,5 +1,3 @@
-# App/models.py
-
 from django.db import models
 
 class Producto(models.Model):
@@ -42,8 +40,6 @@ class Schedule(models.Model):
 
     def __str__(self):
         return f"{self.date} at {self.time}"
-
-# App/models.py
 
 class Booking(models.Model):
     SERVICE_CHOICES = [
