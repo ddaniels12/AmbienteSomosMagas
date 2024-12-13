@@ -1,0 +1,90 @@
+<!-- schedule_list.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Horarios Disponibles</h2>
+
+<style>
+.calendar-container {
+    max-width: 1400px; /* Aumenta el ancho máximo */
+    margin: 0 auto;
+    padding: 30px; /* Aumenta el padding */
+    background-color: #ffffff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+#calendar {
+    padding: 30px; /* Aumenta el padding */
+}
+
+.fc-toolbar {
+    background-color: #6a82fb;
+    color: white;
+    border-radius: 8px;
+    padding: 25px; /* Aumenta el padding */
+    margin-left: 40px;
+    margin-right: 40px;
+    font-size: 1.2em; /* Aumenta el tamaño de la fuente */
+}
+
+.fc-button {
+    background-color: #fc5c7d;
+    border: none;
+    color: white;
+    margin: 0 10px; /* Aumenta el margen */
+    padding: 15px 20px; /* Aumenta el padding */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 1em; /* Aumenta el tamaño de la fuente */
+}
+
+.fc-button:hover {
+    background-color: #ffdd57;
+}
+
+.fc-daygrid-event {
+    background-color: #6a82fb;
+    border: none;
+    color: white;
+    padding: 10px; /* Aumenta el padding */
+    border-radius: 5px;
+    transition: background-color 0.3s;
+    font-size: 1em; /* Aumenta el tamaño de la fuente */
+}
+
+.fc-daygrid-event:hover {
+    background-color: #fc5c7d;
+}
+</style>
+
+<div class="calendar-container">
+    <div id='calendar'></div>
+</div>
+
+<link href='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.css' rel='stylesheet' />
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/main.min.js'></script>
+<script src='https://cdn.jsdelivr.net/npm/fullcalendar@5.11.0/locales-all.min.js'></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var calendarEl = document.getElementById('calendar');
+
+        var calendar = new FullCalendar.Calendar(calendarEl, {
+            locale: 'es', // Configuración para mostrar el calendario en español
+            initialView: 'dayGridMonth',
+            events: function(fetchInfo, successCallback, failureCallback) {
+                fetch('/schedule_list/')
+                    .then(response => response.json())
+                    .then(data => successCallback(data))
+                    .catch(error => failureCallback(error));
+            },
+            eventClick: function(info) {
+                window.location.href = info.event.url;
+                info.jsEvent.preventDefault(); // Prevents the browser from following the link in the href attribute
+            }
+        });
+
+        calendar.render();
+    });
+</script>
+{% endblock %}

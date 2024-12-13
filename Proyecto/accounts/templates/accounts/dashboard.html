@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <!-- Agrega tu archivo CSS si tienes estilos personalizados -->
+    <link rel="stylesheet" href="{% static 'accounts/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Inicio</a></li>
+                <li><a href="/dashboard/">Dashboard</a></li>
+                <li><a href="/accounts/logout/">Cerrar sesión</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Bienvenido al Dashboard</h1>
+        <p>Hola, {{ user.username }}. Aquí puedes gestionar tu cuenta o explorar el sitio.</p>
+
+        <!-- Ejemplo de enlaces o secciones -->
+        <section>
+            <h2>Opciones</h2>
+            <ul>
+                <li><a href="/profile/">Ver perfil</a></li>
+                <li><a href="/settings/">Configuración</a></li>
+                <li><a href="/">Regresar al inicio</a></li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>

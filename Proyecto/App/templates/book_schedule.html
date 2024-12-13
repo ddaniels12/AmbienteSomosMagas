@@ -1,0 +1,90 @@
+<!-- book_schedule.html -->
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2 class="text-center mb-4">Agendar Horario</h2>
+    <div class="row justify-content-center">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            {{ form.name.label_tag }}
+                            {{ form.name }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.email.label_tag }}
+                            {{ form.email }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.phone.label_tag }}
+                            {{ form.phone }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.schedule.label_tag }}
+                            {{ form.schedule }}
+                        </div>
+                        <div class="form-group">
+                            {{ form.service_type.label_tag }}
+                            {{ form.service_type }}
+                        </div>
+                        <div class="text-center">
+                            <button type="submit" class="btn btn-primary mt-3">Agendar</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+<style>
+.container {
+    max-width: 800px; /* Ajusta el ancho máximo del contenedor */
+}
+
+.card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+.card-body {
+    padding: 30px;
+}
+
+form {
+    width: 100%; /* Asegura que el formulario ocupe el 100% del contenedor */
+}
+
+form .form-group {
+    margin-bottom: 15px; /* Añade un margen inferior a los grupos de formularios */
+}
+
+form .form-control {
+    width: 100%; /* Asegura que los controles del formulario ocupen el 100% del contenedor */
+    box-sizing: border-box; /* Incluye el padding y el borde en el ancho y alto del elemento */
+    padding: 10px; /* Añade padding a los campos de entrada */
+    border: 1px solid #ced4da; /* Añade un borde a los campos de entrada */
+    border-radius: 4px; /* Añade un borde redondeado a los campos de entrada */
+    font-size: 1em; /* Ajusta el tamaño de la fuente */
+}
+
+form label {
+    font-weight: bold; /* Hace que los labels sean negritas */
+    margin-bottom: 5px; /* Añade un margen inferior a los labels */
+    display: block; /* Hace que los labels sean bloques */
+}
+
+.btn-primary {
+    background-color: #6a82fb;
+    border-color: #6a82fb;
+}
+
+.btn-primary:hover {
+    background-color: #fc5c7d;
+    border-color: #fc5c7d;
+}
+</style>

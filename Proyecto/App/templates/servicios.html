@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Somos Magas - Servicios</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <script>
+        function irAPagar() {
+            alert('Ir a pagar');
+        }
+    
+        function openNav() {
+            document.getElementById("sidepanel").style.width = "20%";
+        }
+    
+        function closeNav() {
+            document.getElementById("sidepanel").style.width = "0";
+        }
+    
+        function pagar() {
+            alert('Pagar');
+        }
+    
+        </script>
+
+</head>
+<body>
+
+    <header class="sticky-top">
+        <div style="float: left; margin-left: 50px;">
+            <img src="../static/img/logo1.png" alt="logo" style="max-width: 125px;">
+        </div>
+        <div class="cart" style="float: right;">
+            <button class="cart btn" onClick="openNav()" style="object-position: top;">
+                <img src="../static/img/product/cart.png" alt="logo2" style="max-width: 65px; margin-right: 60px;">
+            </button>
+            <div id="sidepanel" class="sidepanel">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <div>
+                    <div>
+                        <div id="cartside"></div>
+                        <br>
+                        <p id="sumaPago">Total: </p>
+                        <br>
+                        <button style="float:left; position: relative;bottom: 20px;" onclick="pagar()">Pagar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <h1 style="margin-left: 95px"><strong>Somos Magas</strong></h1>
+        <nav style="margin-left: 95px; margin-right: auto; text-align: center;">
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'servicios' %}">Servicios</a>
+            <a href="{% url 'productos' %}">Productos</a>
+            <a href="{% url 'contacto' %}">Contacto</a>
+        </nav>
+    </header>
+
+<main>
+    <section id="services" style="margin: 15px;">
+        <h2>Servicios Ofrecidos</h2>
+
+        <article class="service d-flex align-items-start mb-4">
+            <img class="service-image me-3" src="{% static 'img/tarot.jpg' %}" alt="Tarot" loading="lazy">
+            <div class="flex-grow-1">
+                <h3>Tarot</h3>
+                <p class="service-description">En nuestras sesiones de tarot, te ayudaremos a descubrir respuestas y claridad en momentos de incertidumbre. A través de la lectura de cartas, te guiaremos en tu camino, brindándote insights valiosos para tomar decisiones más conscientes y conectar con tu yo interior.</p>
+                <div class="text-center mt-4">
+                    <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#requestModal">Agendar</button>
+                </div>
+            </div>
+        </article>        
+
+        <article class="service d-flex align-items-start mb-4">
+            <img class="service-image me-3" src="{% static 'img/reiki.jpg' %}" alt="Reiki" loading="lazy">
+            <div class="flex-grow-1">
+                <h3>Reiki</h3>
+                <p class="service-description">Ofrecemos sesiones de reiki para ayudarte a liberar el estrés y restaurar tu energía. Nuestros practicantes te acompañarán en un viaje de sanación, promoviendo el bienestar emocional y físico, para que te sientas renovado y en equilibrio.</p>
+                <div class="text-center">
+                    <a href="{% url 'schedule_page' %}" class="btn btn-primary">Agendar</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="service d-flex align-items-start mb-4">
+            <img class="service-image me-3" src="{% static 'img/terapiafloral.jpg' %}" alt="Terapia de Flores" loading="lazy">
+            <div class="flex-grow-1">
+                <h3>Terapia de Flores</h3>
+                <p class="service-description">Con nuestra terapia de flores, te ayudaremos a encontrar un equilibrio emocional. Utilizamos esencias florales personalizadas para ayudarte a superar bloqueos y ansiedades, brindándote apoyo en tu proceso de sanación y autoconocimiento.</p>
+                <div class="text-center">
+                    <a href="{% url 'schedule_page' %}" class="btn btn-primary">Agendar</a>
+                </div>
+            </div>
+        </article>
+        
+    </section>
+
+    <div class="modal fade" id="requestModal" tabindex="-1" aria-labelledby="requestModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="requestModalLabel">Personaliza tu Solicitud</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <form id="serviceRequestForm">
+                    <div class="modal-body">
+                        <!-- Secciones del flujo -->
+                        <div id="step1" class="modal-step">
+                            <h6>¿Para qué necesitas la lectura de tarot?</h6>
+                            <div>
+                                <input type="radio" id="selfDiscovery" name="purpose" value="Conocerce a uno mismo" required>
+                                <label for="selfDiscovery">Conocerse a uno mismo</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="meditation" name="purpose" value="Meditación">
+                                <label for="meditation">Meditación (sobre destino, futuro, vida)</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="advice" name="purpose" value="Buscar consejo">
+                                <label for="advice">Buscar consejo</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="notSure" name="purpose" value="No lo tengo claro">
+                                <label for="notSure">No sé o no lo tengo claro</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="other" name="purpose" value="Otro">
+                                <label for="other">Otro</label>
+                                <input type="text" id="otherText" class="form-control mt-2" placeholder="Especificar (opcional)">
+                            </div>
+                        </div>
+    
+                        <div id="step2" class="modal-step d-none">
+                            <h6>¿Qué duración te gustaría que tuviera la sesión?</h6>
+                            <div>
+                                <input type="radio" id="duration15" name="duration" value="15min" required>
+                                <label for="duration15">15 minutos</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="duration30" name="duration" value="30min">
+                                <label for="duration30">30 minutos</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="duration60" name="duration" value="60min">
+                                <label for="duration60">60 minutos</label>
+                            </div>
+                        </div>
+    
+                        <div id="step3" class="modal-step d-none">
+                            <h6>¿Dónde quieres recibir el servicio?</h6>
+                            <div>
+                                <input type="radio" id="atHome" name="location" value="A domicilio" required>
+                                <label for="atHome">A domicilio</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="atProfessional" name="location" value="Donde el profesional">
+                                <label for="atProfessional">Donde el profesional</label>
+                            </div>
+                            <div>
+                                <input type="radio" id="remote" name="location" value="Atención remota">
+                                <label for="remote">Atención remota</label>
+                            </div>
+                            <div id="addressField" class="d-none mt-3">
+                                <label for="address">Dirección:</label>
+                                <input type="text" id="address" name="address" class="form-control" placeholder="Ingresa tu dirección">
+                            </div>
+                        </div>
+    
+                        <div id="step4" class="modal-step d-none">
+                            <h6>¿Cuándo necesitas que se realice el servicio?</h6>
+                            <p>Elige algunos días que te acomoden:</p>
+                            <input type="date" id="serviceDate" name="serviceDate" class="form-control" required>
+                        </div>
+    
+                        <div id="step5" class="modal-step d-none">
+                            <h6>¿Algo más que agregar?</h6>
+                            <textarea id="additionalDetails" name="additionalDetails" class="form-control" placeholder="Detalles adicionales (opcional)"></textarea>
+                        </div>
+    
+                        <div id="step6" class="modal-step d-none">
+                            <h6>Correo electrónico</h6>
+                            <input type="email" id="email" name="email" class="form-control" placeholder="Ingresa tu correo electrónico" required>
+                        </div>
+                    </div>
+    
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="prevStep">Atrás</button>
+                        <button type="button" class="btn btn-primary" id="nextStep">Siguiente</button>
+                        <button type="submit" class="btn btn-success d-none" id="submitRequest">Enviar</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</main>
+
+<button onclick="scrollToTop()" id="scrollToTopBtn" title="Go to top">⬆</button>
+
+<script>
+    // Mostrar/ocultar el botón basado en el desplazamiento
+    window.onscroll = function() {scrollFunction()};
+
+    function scrollFunction() {
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+        if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+            scrollToTopBtn.style.display = "block";
+        } else {
+            scrollToTopBtn.style.display = "none";
+        }
+    }
+
+    // Función para desplazarse al inicio
+    function scrollToTop() {
+        document.body.scrollTop = 0;
+        document.documentElement.scrollTop = 0;
+    }
+</script>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script>
+
+
+    function reducirDelCarrito(productId) {
+        console.log("Reducing product with ID:", productId); // Debugging log
+        $.ajax({
+            url: "{% url 'reducir_del_carro' 0 %}".replace('0', productId),
+            type: 'POST',
+            data: {
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                console.log("Response from server:", response); // Debugging log
+                if (response.status === 'success') {
+                    const product = response.carro.find(product => product.id_producto === productId);
+                    if (product && product.cantidad > 0) {
+                        $(`#producto-${productId} .cantidad`).text(`Cantidad: ${product.cantidad}`);
+                    } else {
+                        $(`#producto-${productId}`).remove();
+                    }
+                    actualizarTotal(response.carro); // Update total after quantity change or removal
+                } else {
+                    alert(response.message);
+                }
+            },
+            error: function(xhr, errmsg, err) {
+                console.log(xhr.status + ": " + xhr.responseText);
+            }
+        });
+    }
+
+    function eliminarDelCarrito(productId) {
+console.log("Deleting product with ID:", productId); // Debugging log
+$.ajax({
+    url: "{% url 'eliminar_del_carro' 0 %}".replace('0', productId), // Update URL for removing
+    type: 'POST',
+    data: {
+        'csrfmiddlewaretoken': '{{ csrf_token }}'
+    },
+    success: function(response) {
+        console.log("Response from server:", response); // Debugging log
+        if (response.status === 'success') {
+            $(`#producto-${productId}`).remove(); // Remove product element from DOM
+            actualizarTotal(response.carro); // Update total after removal
+        } else {
+            alert(response.message);
+        }
+    },
+    error: function(xhr, errmsg, err) {
+        console.log(xhr.status + ": " + xhr.responseText);
+    }
+});
+}
+
+
+    function aumentarDelCarrito(productId) {
+        console.log("Increasing product with ID:", productId); // Debugging log
+        $.ajax({
+            url: "{% url 'aumentar_del_carro' 0 %}".replace('0', productId), // Update URL for increasing
+            type: 'POST',
+            data: {
+                'csrfmiddlewaretoken': '{{ csrf_token }}'
+            },
+            success: function(response) {
+                console.log("Response from server:", response); // Debugging log
+                if (response.status === 'success') {
+                    const product = response.carro.find(product => product.id_producto === productId);
+                    if (product) {
+                        $(`#producto-${productId} .cantidad`).text(`Cantidad: ${product.cantidad}`); // Update quantity text
+                    }
+                    actualizarTotal(response.carro); // Update total after quantity change
+                    } else {
+                    alert(response.message);
+                }
+            },
+            error: function(xhr, errmsg, err) {
+            console.log(xhr.status + ": " + xhr.responseText);
+    }
+});
+}
+    
+    
+    function actualizarTotal(carro) {
+        let total = 0;
+        carro.forEach(function(producto) {
+            total += producto.precio * producto.cantidad;
+        });
+        $('#sumaPago').text('Total: $' + total.toFixed(2)); // Update total in sidepanel
+    }
+
+    $(document).ready(function() {
+        // Function to render the initial cart in the sidepanel
+        function renderCarritoInicial() {
+            const carrito = {{ carro|safe }};
+            actualizarCarrito(carrito);
+        }
+
+        // Call the function to render the cart when the page loads
+        renderCarritoInicial();
+
+        // Event listener for add-to-cart buttons
+        $('.add-to-cart').on('click', function(e) {
+            e.preventDefault();
+            const productId = $(this).data('id');
+            
+            $.ajax({
+                url: "{% url 'anadir_al_carro' 0 %}".replace('0', productId),
+                type: 'POST',
+                data: {
+                    'csrfmiddlewaretoken': '{{ csrf_token }}'
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        actualizarCarrito(response.carro);
+                    } else {
+                        alert(response.message);
+                    }
+                },
+                error: function(xhr, errmsg, err) {
+                    console.log(xhr.status + ": " + xhr.responseText);
+                }
+            });
+        });
+
+        // Function to update the cart display in the sidepanel
+        function actualizarCarrito(carro) {
+            const productosCartside = $('#cartside');
+
+            productosCartside.empty();
+
+            // Add cart title
+            productosCartside.append('<h2>Carrito</h2>');
+
+            carro.forEach(function(producto) {
+                if (producto.cantidad > 0) {
+                    const productoHtml = `
+                        <div id="producto-${producto.id_producto}">
+                            <img src="${producto.imagen_url}" alt="${producto.nombre}" style="width: 50px; height: 50px; object-fit: cover; margin-right: 10px;">
+                            <p>${producto.nombre} - $${producto.precio} - <span class="cantidad">Cantidad: ${producto.cantidad}</span></p>
+                            <button onclick="reducirDelCarrito(${producto.id_producto})">-</button>
+                            <button onclick="aumentarDelCarrito(${producto.id_producto})">+</button>
+                            <button onclick="eliminarDelCarrito(${producto.id_producto})">Eliminar</button>
+                        </div>
+                    `;
+                    productosCartside.append(productoHtml);
+                }
+            });
+
+            actualizarTotal(carro); // Update total after rendering cart
+        }
+    });
+
+    // Script para manejar el flujo del modal
+    // Variables globales
+    document.addEventListener("DOMContentLoaded", function () {
+        const steps = document.querySelectorAll(".modal-step");
+        const prevStepButton = document.getElementById("prevStep");
+        const nextStepButton = document.getElementById("nextStep");
+        const submitButton = document.getElementById("submitRequest");
+        let currentStep = 0;
+
+        function updateStepVisibility() {
+            steps.forEach((step, index) => {
+                step.classList.toggle("d-none", index !== currentStep);
+            });
+            prevStepButton.style.display = currentStep > 0 ? "inline-block" : "none";
+            nextStepButton.style.display = currentStep < steps.length - 1 ? "inline-block" : "none";
+            submitButton.classList.toggle("d-none", currentStep < steps.length - 1);
+        }
+
+        function validateCurrentStep() {
+            const inputs = steps[currentStep].querySelectorAll("input[required], textarea[required]");
+            for (const input of inputs) {
+                if (!input.checkValidity()) {
+                    alert("Por favor, completa todos los campos obligatorios antes de continuar.");
+                    return false;
+                }
+            }
+            return true;
+        }
+
+        prevStepButton.addEventListener("click", function () {
+            if (currentStep > 0) {
+                currentStep--;
+                updateStepVisibility();
+            }
+        });
+
+        nextStepButton.addEventListener("click", function () {
+            if (validateCurrentStep()) {
+                currentStep++;
+                updateStepVisibility();
+            }
+        });
+
+        updateStepVisibility(); // Inicializar visibilidad
+    });
+
+    
+</script>
+<footer>
+    <p>&copy; 2024 Somos Magas</p>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+
+</html>

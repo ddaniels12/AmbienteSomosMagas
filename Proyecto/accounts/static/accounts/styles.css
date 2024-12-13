@@ -1,0 +1,116 @@
+/* static/css/styles.css */
+/* Importar fuentes de Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Delius+Swash+Caps&family=Pacifico&display=swap');
+
+/* Estilos Generales */
+body {
+    font-family: 'Delius Swash Caps', 'Pacifico', sans-serif; /* Tipografía de la referencia */
+    margin: 0;
+    padding: 0;
+    background-color: #f0f4f8; /* Fondo de color suave */
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    flex-direction: column;
+    width: 100%; /* Aseguramos que el body ocupe el 100% del ancho */
+}
+
+/* Encabezado y Pie de Página */
+header {
+    background: linear-gradient(90deg, #6a82fb, #fc5c7d); /* Gradiente entre azul y rosa */
+    color: white;
+    text-align: center;
+    padding: 20px 0; /* Más espacio en el encabezado */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+    width: 100%; /* Asegura que el header ocupe el 100% del ancho */
+    position: fixed; /* Cambiar a 'fixed' para mantenerlo en la parte superior */
+    top: 0; /* Fijarlo en la parte superior */
+    left: 0; /* Alinea al borde izquierdo de la pantalla */
+    z-index: 1000; /* Asegura que el header se muestre por encima de otros elementos */
+}
+
+/* Pie de página con color diferente */
+footer {
+    background-color: #fc5c7d; /* Fondo rosado para el pie de página */
+    color: white;
+    text-align: center;
+    padding: 0px;
+    width: 100%; /* Asegura que el footer ocupe el 100% del ancho */
+    position: absolute; /* Fijado al fondo */
+    bottom: 0;
+    left: 0; /* Alinea al borde izquierdo de la pantalla */
+    z-index: 1000; /* Asegura que el pie de página se mantenga visible */
+}
+/* Navegación */
+nav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: white;
+    font-weight: bold;
+    font-size: 1.2em; /* Tamaño de fuente más grande */
+    padding: 10px 15px;
+    transition: color 0.3s, transform 0.3s;
+}
+
+nav a:hover {
+    color: #fc5c7d; /* Color rosado en hover */
+    transform: scale(1.1); /* Aumentar tamaño al pasar el mouse */
+}
+
+/* Formulario */
+form {
+    background-color: white;
+    padding: 30px; /* Aumentar el espacio interior */
+    border-radius: 8px;
+    width: 350px;
+    margin: 0 auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Sombra más fuerte */
+}
+
+/* Estilos de los Campos del Formulario */
+form input, form button {
+    width: 85%;
+    padding: 12px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+/* Botón de Enviar */
+form button {
+    background-color: #6a82fb; /* Azul de fondo */
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+form button:hover {
+    background-color: #fc5c7d; /* Cambio de color a rosa en hover */
+}
+
+/* Títulos */
+h1 {
+    font-family: 'Pacifico', sans-serif; /* Fuente para el título */
+    font-size: 2.5em; /* Tamaño más grande */
+    color: #6a82fb; /* Azul para los títulos */
+}
+
+/* Estilo de los Enlaces */
+a {
+    text-decoration: none;
+    color: #6a82fb; /* Color azul para los enlaces */
+    transition: color 0.3s;
+}
+
+a:hover {
+    color: #fc5c7d; /* Cambio de color a rosa en hover */
+}
+

@@ -1,0 +1,55 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iniciar Sesión</title>
+    <link rel="stylesheet" href="{% static 'accounts/styles.css' %}">
+</head>
+<body>
+    <header>
+        <nav style="text-align: center;">
+            <a href="{% url 'index' %}">Inicio</a>
+            <a href="{% url 'register' %}">Registrarse</a>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Iniciar Sesión</h1>
+
+        <!-- Mostrar mensajes de error o éxito -->
+        {% if messages %}
+            <ul>
+                {% for message in messages %}
+                    <li style="color: red;">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <!-- Formulario de inicio de sesión -->
+        <form method="post">
+            {% csrf_token %}
+            
+            <div>
+                <label for="{{ form.username.id_for_label }}">Usuario:</label>
+                {{ form.username }}
+            </div>
+            <div>
+                <label for="{{ form.password.id_for_label }}">Contraseña:</label>
+                {{ form.password }}
+            </div>
+            
+            <button type="submit">Ingresar</button>
+        </form>
+
+        <!-- Enlace para redirigir a la página de registro -->
+        <p>¿No tienes una cuenta? <a href="{% url 'register' %}">Regístrate aquí</a>.</p>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Mi Sitio Web. Todos los derechos reservados.</p>
+    </footer>
+</body>
+</html>
