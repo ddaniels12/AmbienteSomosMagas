@@ -44,7 +44,7 @@
                   <br>
                   <p id="sumaPago">Total: </p>
                   <br>
-                  <button style="float:left; position: relative;bottom: 20px;" onclick="pagar()">Pagar</button>
+                  <button style="float:left; position: relative;bottom: 20px;" onclick="pagar()">Enviar a WhatsApp</button>
               </div>
               
                 
@@ -58,13 +58,14 @@
           <a href="{% url 'servicios' %}">Servicios</a>
           <a href="{% url 'productos' %}">Productos</a>
           <a href="{% url 'contacto' %}">Contacto</a>
+          <a href="{% url 'login' %}">Iniciar sesión</a>
         </nav>
       </header>
 
 <main class="container mt-5 pt-5" style="max-width: 750px; margin-top: 10%; margin-bottom: 10%;">
     <section id="contact" class="my-5">
         <h2 class="text-center mb-4">Formulario de Contacto</h2>
-        <form action="{% url 'contacto' %}" method="post" class="needs-validation" novalidate>
+        <form action="https://formsubmit.co/daviddaniels.818@gmail.com" method="post" class="needs-validation" novalidate>
             <div class="mb-2">
                 <label for="name" class="form-label">Nombre:</label>
                 <input type="text" id="name" name="name" class="form-control" placeholder="Juan Pérez" required>

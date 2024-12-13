@@ -44,7 +44,7 @@
                         <br>
                         <p id="sumaPago">Total: </p>
                         <br>
-                        <button style="float:left; position: relative;bottom: 20px;" onclick="pagar()">Pagar</button>
+                        <button style="float:left; position: relative;bottom: 20px;" onclick="pagar()">Enviar a WhatsApp</button>
                     </div>
                 </div>
             </div>
@@ -55,11 +55,8 @@
             <a href="{% url 'servicios' %}">Servicios</a>
             <a href="{% url 'productos' %}">Productos</a>
             <a href="{% url 'contacto' %}">Contacto</a>
+            <a href="{% url 'login' %}">Iniciar sesión</a>
         </nav>
-        <!-- Agregar el enlace para iniciar sesión -->
-        <div style="float: right; margin-right: 50px; padding-top: 20px;">
-            <a href="{% url 'login' %}" style="font-size: 18px; color: #333; text-decoration: none;">Iniciar sesión</a>
-        </div>
     </header>
     
 

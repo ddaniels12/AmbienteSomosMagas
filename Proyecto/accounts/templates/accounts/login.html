@@ -10,7 +10,10 @@
 </head>
 <body>
     <header>
-        <nav style="text-align: center;">
+        <div style="float: left; margin-left: 50px;">
+            <img src="{% static 'img/logo1.png' %}" alt="logo" style="max-width: 75px;">
+        </div>
+        <nav style="text-align: center; margin-right: 95px; font-size: 1.2em;">
             <a href="{% url 'index' %}">Inicio</a>
             <a href="{% url 'register' %}">Registrarse</a>
         </nav>
